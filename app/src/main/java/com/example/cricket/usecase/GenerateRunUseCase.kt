@@ -7,6 +7,7 @@ import com.example.cricket.ui.viewModel.data.MatchWON
 import com.example.cricket.ui.viewModel.data.PROGRESS
 import com.example.cricket.ui.viewModel.data.ScoreCard
 import com.example.cricket.ui.viewModel.data.TOTAL_BALLS
+import com.example.cricket.ui.viewModel.data.TOTAL_WICKETS
 import kotlin.random.Random
 
 interface GenerateRunUseCase {
@@ -41,7 +42,7 @@ class GenerateRunUseCaseImpl : GenerateRunUseCase {
 
                 7 -> { // Wicket
                     val wicket = scoreCard.wicketsDown + 1
-                    if (wicket < 10) {
+                    if (wicket < TOTAL_WICKETS) {
                         val strickerBatsman = nextBatsman[0]
                         nextBatsman.removeAt(0)
                         scoreCard.apply {
