@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Cricket</string>
+    <string name="overs">Overs:</string>
+    <string name="score">Score:</string>
+    <string name="runs">Runs</string>
+    <string name="bowl">Bowl</string>
+    <string name="scoreview">%1$d - %2$d</string>
+    <string name="last_ball">Last ball</string>
+    <string name="towin">To Win:</string>
+    <string name="towinText">%1$d runs in %2$d balls</string>
+</resources>

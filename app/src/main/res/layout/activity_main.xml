@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cricket.ui.viewModel.MainActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        tools:context=".ui.MainActivity">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bowl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="@{()-> viewModel.bowlBowled()}"
+            android:text="@string/bowl"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/scoreTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/scoreView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/scoreview, viewModel.scoreData.runs, viewModel.scoreData.wicketsDown)}"
+            app:layout_constraintStart_toEndOf="@id/scoreTxtView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/overTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/overs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scoreView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/overView"
+            overs="@{viewModel.scoreData.ballsBowled}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/overTxtView"
+            app:layout_constraintTop_toTopOf="@id/overTxtView"
+            tools:text="lagnsjkgb" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/toWin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/towin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/overView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/toWinText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/towinText, viewModel.scoreData.toWin, (120 - viewModel.scoreData.ballsBowled))}"
+            app:layout_constraintStart_toEndOf="@id/toWin"
+            app:layout_constraintTop_toTopOf="@id/toWin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/currRun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.scoreData.runsOnThisBowl}"
+            android:textSize="60sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lastBall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_ball"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currRun" />
+
+        <FrameLayout
+            android:id="@+id/pitchLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintBottom_toTopOf="@id/bowl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastBall">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/stricker"
+                batsman="@{viewModel.scoreData.stricker}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                tools:text="Rohit Sharma" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nonstricker"
+                batsman="@{viewModel.scoreData.nonStricker}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                tools:text="K L Rahul" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
